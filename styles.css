@@ -1,0 +1,133 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #87CEEB; /* Sky background */
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.title {
+    position: absolute;
+    top: 20px; /* Adjust based on your preference */
+    width: 100%;
+    text-align: center;
+    font-size: 4rem;
+    color: #fff;
+    font-family: 'Pacifico', cursive; /* Example beach-themed font */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: waveAnimation 5s infinite;
+    z-index: 3; /* Ensure title is above water and cow */
+}
+
+@keyframes waveAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    text-align: center;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Smooth fade-out */
+    z-index: 3; /* Ensure popup is above other content */
+}
+
+.popup.hidden {
+    opacity: 0;
+}
+
+.water {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#waterVideo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the container */
+    z-index: -1; /* Place video behind other content */
+}
+
+#cow {
+    position: absolute;
+    bottom: 10%; /* Adjust based on the water level */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 450px;
+    cursor: pointer;
+    animation: bobbing 2s ease-in-out infinite; /* Bobbing effect */
+    transition: top 1s ease-in; /* Smooth transition for falling */
+    z-index: 2; /* Ensure cow is above water */
+}
+
+@keyframes bobbing {
+    0% { bottom: 8%; }
+    50% { bottom: 12%; }
+    100% { bottom: 8%; }
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple-effect 1s ease-out forwards;
+    z-index: 2;
+}
+
+@keyframes ripple-effect {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.social-icons {
+    font-size: 1.5rem;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.social-icons a {
+    color: #FFF;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
